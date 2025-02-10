@@ -4,12 +4,12 @@ from agent import generate_response
 import pandas as pd
 
 # Page Config
-st.set_page_config("Caroline", page_icon=":star2:")
+st.set_page_config("Megan", page_icon=":star2:")
 
 # Set up Session State
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi, My name is Caroline and I'm here to help you with any concerns you and your partner might have for the future!  For a start, could you kindly introduce yourself and your partner?"},
+        {"role": "assistant", "content": "Hi, My name is Megan and I'm here to help you with any concerns you and your partner might have for the future!  For a start, could you kindly introduce yourself and your partner?"},
     ]
 
 # Submit handler
