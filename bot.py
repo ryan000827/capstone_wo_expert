@@ -1,13 +1,15 @@
 import streamlit as st
 from utils import write_message
+from agent import generate_response
+import pandas as pd
 
 # Page Config
-st.set_page_config("Ebert", page_icon=":movie_camera:")
+st.set_page_config("Caroline", page_icon=":star2:")
 
 # Set up Session State
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi, I'm the GraphAcademy Chatbot!  How can I help you?"},
+        {"role": "assistant", "content": "Hi, My name is Caroline and I'm here to help you with any concerns you and your partner might have for the future!  For a start, could you kindly introduce yourself and your partner?"},
     ]
 
 # Submit handler
@@ -21,10 +23,9 @@ def handle_submit(message):
 
     # Handle the response
     with st.spinner('Thinking...'):
-        # # TODO: Replace this with a call to your LLM
-        from time import sleep
-        sleep(1)
-        write_message('assistant', message)
+        # Call the agent
+        response = generate_response(message)
+        write_message('assistant', response)
 
 
 # Display messages in Session State
@@ -38,3 +39,18 @@ if question := st.chat_input("What is up?"):
 
     # Generate a response
     handle_submit(question)
+
+# Download chat history
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode("utf-8")
+
+chat_history = pd.DataFrame(st.session_state.messages)
+csv = convert_df(chat_history)
+
+st.download_button(
+    label="Download chat history as CSV",
+    data=csv,
+    file_name="chat_history_df.csv",
+    mime="text/csv",
+)

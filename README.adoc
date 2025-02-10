@@ -10,6 +10,7 @@ For a complete walkthrough of this repository, link:https://graphacademy.neo4j.c
 To run the application, you must install the libraries listed in `requirements.txt`.
 
 [source,sh]
+cd llm-chatbot-python
 pip install -r requirements.txt
 
 

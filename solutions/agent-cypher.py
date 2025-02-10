@@ -10,7 +10,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain import hub
 from utils import get_session_id
 
-from tools.vector import get_movie_plot
+from tools.agendasetting import get_movie_plot
 # tag::import_cypher_qa[]
 from tools.cypher import cypher_qa
 # end::import_cypher_qa[]

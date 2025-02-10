@@ -11,7 +11,7 @@ from langchain import hub
 from utils import get_session_id
 
 # tag::import_get_movie_plot[]
-from tools.vector import get_movie_plot
+from tools.agendasetting import get_movie_plot
 # end::import_get_movie_plot[]
 
 chat_prompt = ChatPromptTemplate.from_messages(
